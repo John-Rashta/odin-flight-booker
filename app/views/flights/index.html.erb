@@ -1,0 +1,7 @@
+<%= form_with url: root_path, method: :get do |form| %>
+    <%= form.select(:departure_airport, options_for_select(@all_airports))%>
+    <%= form.select(:arrival_airport, options_for_select(@all_airports))%>
+    <%= form.select( :num_of_passengers, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4]]))%>
+    <%= form.select(:start_time, options_from_collection_for_select(@all_dates, :start_time_seconds, :start_time_formatted)) %>
+    <%= form.submit %>
+<% end %>
