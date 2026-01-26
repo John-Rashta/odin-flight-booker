@@ -8,6 +8,10 @@ class Flight < ApplicationRecord
     start_time.strftime("%m/%d/%Y")
   end
 
+  def start_time_with_hours_formatted
+    start_time.strftime("%m/%d/%Y %H:%M")
+  end
+
   def start_time_seconds
     start_time.to_time.to_i
   end

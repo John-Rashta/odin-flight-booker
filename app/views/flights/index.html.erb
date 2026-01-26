@@ -5,3 +5,10 @@
     <%= form.select(:start_time, options_from_collection_for_select(@all_dates, :start_time_seconds, :start_time_formatted)) %>
     <%= form.submit %>
 <% end %>
+
+<% if @found_flights && !@found_flights.empty? %>
+    <%= form_with do |form| %>
+        <%= form.collection_radio_buttons :booking, @found_flights, :id, :start_time_with_hours_formatted %>
+        <%= form.submit %> 
+    <% end %>
+<% end %>
