@@ -1,0 +1,20 @@
+<%= form_with model: @booking do |form| %>
+    <%= form.hidden_field :flight_id, value: @flight.id %>
+    <div>
+        <div> <%= @flight.start_time_with_hours_formatted %> </div>
+        <div> <%= @flight.departure_airport.code %> </div>
+        <div> <%= @flight.arrival_airport.code %> </div>
+        <div> <%= @flight.id %> </div>
+    </div>
+
+    <%= form.fields_for :passengers do |passengers_form| %>
+        <li>
+            <%= passengers_form.label :name %>
+            <%= passengers_form.text_field :name %>
+
+            <%= passengers_form.label :email %>
+            <%= passengers_form.text_field :email %>
+        </li>
+    <% end %>
+    <%= form.submit %>
+<% end %>

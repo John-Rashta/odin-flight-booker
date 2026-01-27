@@ -7,8 +7,9 @@
 <% end %>
 
 <% if @found_flights && !@found_flights.empty? %>
-    <%= form_with do |form| %>
-        <%= form.collection_radio_buttons :booking, @found_flights, :id, :start_time_with_hours_formatted %>
+    <%= form_with url: new_booking_path, method: :get do |form| %>
+        <%= form.hidden_field :num_of_passengers, value: @num_of_passengers %>
+        <%= form.collection_radio_buttons :flight_id, @found_flights, :id, :start_time_with_hours_formatted %>
         <%= form.submit %> 
     <% end %>
 <% end %>

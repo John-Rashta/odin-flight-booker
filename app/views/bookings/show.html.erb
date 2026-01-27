@@ -1,0 +1,6 @@
+<div> <%= @booking.flight.departure_airport.code %> </div>
+<div> <%= @booking.flight.arrival_airport.code %> </div>
+<div> <%= @booking.flight.start_time_with_hours_formatted %> </div>
+<% @booking.passengers.each do |passenger| %>
+    <div><%= passenger.name %> </div>
+<% end %>
