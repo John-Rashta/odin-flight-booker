@@ -7,7 +7,7 @@ class FlightsController < ApplicationController
       start_time: filtered_params[3].all_day
     ) if filtered_params
     @all_airports = Airport.pluck(:code, :id)
-    @all_dates = Flight.distinct.order(:start_time)
+    @all_dates = Flight.group("date(start_time)").distinct.order("date(start_time)")
     @num_of_passengers = filtered_params[2] if filtered_params
   end
 
