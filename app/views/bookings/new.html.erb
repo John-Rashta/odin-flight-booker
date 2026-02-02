@@ -7,14 +7,30 @@
         <div> <%= @flight.id %> </div>
     </div>
 
-    <%= form.fields_for :passengers do |passengers_form| %>
-        <li>
-            <%= passengers_form.label :name %>
-            <%= passengers_form.text_field :name %>
+    <div data-controller="booking" >
+        <div id="hello" data-booking-target="container">
+            <%= form.fields_for :passengers do |passengers_form| %>
+                <template data-booking-target="templates" >
+                    <li>
+                        <%= passengers_form.label :name %>
+                        <%= passengers_form.text_field :name %>
 
-            <%= passengers_form.label :email %>
-            <%= passengers_form.text_field :email %>
-        </li>
-    <% end %>
+                        <%= passengers_form.label :email %>
+                        <%= passengers_form.text_field :email %>
+                        <button type="button" data-action="booking#delete" >Delete</button>
+                    </li>
+                </template>
+                <li>
+                    <%= passengers_form.label :name %>
+                    <%= passengers_form.text_field :name %>
+
+                    <%= passengers_form.label :email %>
+                    <%= passengers_form.text_field :email %>
+                    <button type="button" data-action="booking#delete" >Delete</button>
+                </li>
+            <% end %>
+        </div>
+        <button type="button" data-action="booking#add" > Add Passenger </button>
+    </div>
     <%= form.submit %>
 <% end %>
