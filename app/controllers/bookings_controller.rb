@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
     current_params = create_params
     @booking = Booking.build(current_params)
     if @booking.save
+      PassengerMailer.confirmation_email(@booking.passengers.pluck(:email)).deliver_now
       redirect_to @booking
     else
       redirect_to flights_path
